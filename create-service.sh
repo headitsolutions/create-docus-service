@@ -4,7 +4,7 @@
 SERVICE_NAME="docus"
 
 # Replace "/path/to/your/service" with the actual path to your service executable
-SERVICE_PATH="/usr/bin/dotnet /var/www/api/Docus.WebApi.Host.dll --environment Rele"
+SERVICE_PATH="/usr/bin/dotnet /var/www/api/Docus.WebApi.Host.dll --environment Release"
 
 # Replace "your-username" with your username (the user who will run the service)
 SERVICE_USER="root"
@@ -14,6 +14,12 @@ LOG_FILE="/var/log/docus.log"
 
 # Create a service file in the systemd directory
 SERVICE_FILE="/etc/systemd/system/$SERVICE_NAME.service"
+
+# Check if the service already exists
+if systemctl list-unit-files | grep -q "$SERVICE_NAME.service"; then
+    echo "Service $SERVICE_NAME already exists."
+    exit 1
+fi
 
 # Write the service unit file
 cat > $SERVICE_FILE <<EOF
