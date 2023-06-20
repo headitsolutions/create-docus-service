@@ -16,8 +16,8 @@ LOG_FILE="/var/log/docus.log"
 SERVICE_FILE="/etc/systemd/system/$SERVICE_NAME.service"
 
 # Check if the service already exists
-if systemctl list-unit-files | grep -q "$SERVICE_NAME.service"; then
-    echo "Service $SERVICE_NAME already exists."
+if systemctl show --quiet $SERVICE_NAME; then
+    echo "Service '$SERVICE_NAME' already exists. Skipping service creation."
     exit 0
 fi
 
