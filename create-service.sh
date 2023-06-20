@@ -18,7 +18,7 @@ SERVICE_FILE="/etc/systemd/system/$SERVICE_NAME.service"
 # Check if the service already exists
 if systemctl list-unit-files | grep -q "$SERVICE_NAME.service"; then
     echo "Service $SERVICE_NAME already exists."
-    exit 1
+    exit 0
 fi
 
 # Write the service unit file
