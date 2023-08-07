@@ -4,7 +4,7 @@
 SERVICE_NAME="docus"
 
 # Replace "/path/to/your/service" with the actual path to your service executable
-SERVICE_PATH="dotnet /var/www/api/Docus.WebApi.Host.dll --environment Release"
+SERVICE_PATH="/root/.dotnet/dotnet /var/www/api/Docus.WebApi.Host.dll --environment Release"
 
 # Replace "your-username" with your username (the user who will run the service)
 SERVICE_USER="root"
